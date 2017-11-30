@@ -1,0 +1,7 @@
+{
+    "name": "drupal/json_ld_schema",
+    "type": "drupal-module",
+    "require": {
+        "spatie/schema-org": "^1.4"
+    }
+}

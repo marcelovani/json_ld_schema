@@ -1,0 +1,32 @@
+<?php
+
+namespace Drupal\json_ld_schema_test_sources\Plugin\JsonLdSource;
+
+use Drupal\Core\Cache\CacheableMetadata;
+use Drupal\json_ld_schema\JsonLdSourceBase;
+use Spatie\SchemaOrg\Schema;
+use Spatie\SchemaOrg\Type;
+
+/**
+ * @JsonLdSource(
+ *   label = "Always Hidden Source",
+ *   id = "always_hidden",
+ * )
+ */
+class AlwaysHiddenSource extends JsonLdSourceBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getData(CacheableMetadata $cacheability_metadata): Type {
+    return Schema::thing()->name('Baz');
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function isApplicable(CacheableMetadata $metadata) {
+    return FALSE;
+  }
+
+}

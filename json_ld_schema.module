@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * Module file for the JSON LD Schema module.
+ */
+
+use Drupal\json_ld_schema\PageAttachmentsManager;
+
+/**
+ * @param array $attachments
+ */
+function json_ld_schema_page_attachments(array &$attachments) {
+  \Drupal::classResolver()->getInstanceFromDefinition(PageAttachmentsManager::class)->pageAttachments($attachments);
+}
