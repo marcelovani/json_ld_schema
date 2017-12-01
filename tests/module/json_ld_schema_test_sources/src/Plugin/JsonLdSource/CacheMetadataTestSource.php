@@ -8,6 +8,8 @@ use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
 
 /**
+ * Test the cacheability metadata.
+ *
  * @JsonLdSource(
  *   label = "Cacheability Metadata Test Source",
  *   id = "cache_metadata_test_source",
@@ -18,19 +20,24 @@ class CacheMetadataTestSource extends JsonLdSourceBase {
   /**
    * {@inheritdoc}
    */
-  public function getData(CacheableMetadata $cacheability_metadata): Type {
-    $cacheability_metadata->setCacheTags(['foo_tag']);
-    $cacheability_metadata->setCacheContexts(['url']);
+  public function getData(): Type {
     return Schema::thing()->name('Foo');
   }
 
   /**
    * {@inheritdoc}
    */
-  public function isApplicable(CacheableMetadata $cacheability_metadata) {
-    $cacheability_metadata->setCacheTags(['bar_tag']);
-    $cacheability_metadata->setCacheContexts(['route']);
+  public function isApplicable() {
     return TRUE;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheableMetadata(): CacheableMetadata {
+    $metadata = new CacheableMetadata();
+    $metadata->addCacheContexts(['url']);
+    return $metadata;
   }
 
 }

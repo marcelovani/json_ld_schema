@@ -8,6 +8,8 @@ use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
 
 /**
+ * Generic test source.
+ *
  * @JsonLdSource(
  *   label = "Generic Test Source",
  *   id = "generic_test_source",
@@ -18,7 +20,7 @@ class GenericTestSource extends JsonLdSourceBase {
   /**
    * {@inheritdoc}
    */
-  public function getData(CacheableMetadata $cacheability_metadata): Type {
+  public function getData(): Type {
     return Schema::thing()->name('Bar');
   }
 

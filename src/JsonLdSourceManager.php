@@ -22,32 +22,4 @@ class JsonLdSourceManager extends DefaultPluginManager implements JsonLdSourceMa
     $this->setCacheBackend($cache_backend, 'json_ld_source_plugins');
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function getCurrentPageData(CacheableMetadata $metadata) {
-    $page_data = [];
-    foreach ($this->getDefinitions() as $definition) {
-      /** @var \Drupal\json_ld_schema\JsonLdSourceInterface $source */
-      $source = $this->createInstance($definition['id']);
-
-      // Create a metadata object for each method, so settings tags or contexts
-      // don't override eachother.
-      $is_applicable_cacheability = new CacheableMetadata();
-      $data_cacheability = new CacheableMetadata();
-
-      // If a source plugin indicates it is applicable for the current page,
-      // add the data to the array.
-      if ($source->isApplicable($is_applicable_cacheability)) {
-        $page_data[] = $source->getData($data_cacheability);
-      }
-
-      // Merge both items of cacheability to passed in object.
-      $metadata->addCacheableDependency($data_cacheability);
-      $metadata->addCacheableDependency($is_applicable_cacheability);
-    }
-
-    return $page_data;
-  }
-
 }

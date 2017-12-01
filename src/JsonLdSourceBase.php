@@ -4,6 +4,7 @@ namespace Drupal\json_ld_schema;
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Plugin\PluginBase;
+use Drupal\Core\Url;
 
 /**
  * Base class for JSON source plugins.
@@ -13,9 +14,29 @@ abstract class JsonLdSourceBase extends PluginBase implements JsonLdSourceInterf
   /**
    * {@inheritdoc}
    */
-  public function isApplicable(CacheableMetadata $metadata) {
+  public function isApplicable() {
     // Display on every page by default.
     return TRUE;
+  }
+
+  /**
+   * Get a URI as an absolute string.
+   *
+   * @param string $uri
+   *   A URI.
+   *
+   * @return string
+   *   An absolute URL string.
+   */
+  protected function absoluteUriString($uri) {
+    return Url::fromUri($uri)->setAbsolute(TRUE)->toString();
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function getCacheableMetadata(): CacheableMetadata {
+    return new CacheableMetadata();
   }
 
 }

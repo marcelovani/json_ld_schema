@@ -1,14 +1,29 @@
 <?php
 
 /**
+ * @file
  * Module file for the JSON LD Schema module.
  */
 
-use Drupal\json_ld_schema\PageAttachmentsManager;
-
 /**
- * @param array $attachments
+ * Implements hook_page_bottom().
  */
-function json_ld_schema_page_attachments(array &$attachments) {
-  \Drupal::classResolver()->getInstanceFromDefinition(PageAttachmentsManager::class)->pageAttachments($attachments);
+function json_ld_schema_page_bottom(array &$page_bottom) {
+  $source_manager = \Drupal::service('plugin.manager.json_ld_schema.source');
+  foreach ($source_manager->getDefinitions() as $definition) {
+    /** @var \Drupal\json_ld_schema\JsonLdSourceInterface $source */
+    $source = $source_manager->createInstance($definition['id']);
+    if (!$source->isApplicable()) {
+      continue;
+    }
+    $build = [
+      '#type' => 'json_ld_source',
+      '#plugin_id' => $definition['id'],
+      '#cache' => [
+        'keys' => ['json_ld_source', $definition['id']]
+      ],
+    ];
+    $source->getCacheableMetadata()->applyTo($build);
+    $page_bottom[sprintf('json_ld_source_%s', $definition['id'])] = $build;
+  }
 }
