@@ -2,7 +2,6 @@
 
 namespace Drupal\Tests\json_ld_schema\Functional;
 
-use Drupal\local_testing\LocalTestingTrait;
 use Drupal\node\Entity\Node;
 use Drupal\node\Entity\NodeType;
 use Drupal\Tests\BrowserTestBase;
@@ -13,8 +12,6 @@ use Drupal\Tests\BrowserTestBase;
  * @group json_ld_schema
  */
 class JsonLdEntityTest extends BrowserTestBase {
-
-  use LocalTestingTrait;
 
   /**
    * {@inheritdoc}

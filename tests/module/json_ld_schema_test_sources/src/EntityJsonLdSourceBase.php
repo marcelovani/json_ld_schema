@@ -1,18 +1,21 @@
 <?php
 
-namespace Drupal\json_ld_schema\Source;
+namespace Drupal\json_ld_schema_test_sources;
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\json_ld_schema\Source\JsonLdSourceBase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Base class for JSON LD sources that should appear on entity pages.
  *
  * @deprecated
- *   Use the JsonLdEntity plugin type instead of this base class.
+ *   Use the JsonLdEntity plugin type instead of this base class. This used to
+ *   be a thing until JsonLdEntity, but now it only exists as a good test case
+ *   for the render cache integration of JsonLdSource.
  */
 abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements ContainerFactoryPluginInterface {
 
