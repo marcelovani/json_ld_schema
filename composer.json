@@ -2,6 +2,7 @@
     "name": "drupal/json_ld_schema",
     "type": "drupal-module",
     "require": {
+        "php": ">=7.0",
         "spatie/schema-org": "^1.4"
     }
 }
