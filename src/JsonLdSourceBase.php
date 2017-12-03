@@ -33,6 +33,19 @@ abstract class JsonLdSourceBase extends PluginBase implements JsonLdSourceInterf
   }
 
   /**
+   * Format a timestamp according to ISO-8601.
+   *
+   * @param int $timestamp
+   *   A timestamp.
+   *
+   * @return string
+   *   A date timestamp.
+   */
+  protected function formatTimestamp($timestamp) {
+    return date('c', $timestamp);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function getCacheableMetadata(): CacheableMetadata {

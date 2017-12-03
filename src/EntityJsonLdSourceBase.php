@@ -23,7 +23,7 @@ abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements Contai
   /**
    * The current entity or NULL if none exists.
    *
-   * @var \Drupal\Core\Entity\EntityInterface|NULL
+   * @var \Drupal\Core\Entity\EntityInterface|null
    */
   protected $entity = NULL;
 
@@ -50,7 +50,7 @@ abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements Contai
   /**
    * Get the raw non-access controlled entity from the current route.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|FALSE
+   * @return \Drupal\Core\Entity\EntityInterface|false
    *   An entity for FALSE if none was found.
    */
   private function getRawEntityFromRoute() {
@@ -70,7 +70,7 @@ abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements Contai
   /**
    * Get the current entity, access controlled for the "view" operation.
    *
-   * @return \Drupal\Core\Entity\EntityInterface|FALSE
+   * @return \Drupal\Core\Entity\EntityInterface|false
    *   The entity or FALSE if none was found.
    */
   protected function getEntity() {
@@ -87,7 +87,7 @@ abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements Contai
   public function getCacheableMetadata(): CacheableMetadata {
     $metadata = parent::getCacheableMetadata();
     // Add the cacheability of the access check and the entity, if it exists
-    // for the current page. This base should only be used
+    // for the current page.
     if ($entity = $this->getEntity()) {
       $access = $entity->access('view', NULL, TRUE);
       $metadata->addCacheableDependency($access);
