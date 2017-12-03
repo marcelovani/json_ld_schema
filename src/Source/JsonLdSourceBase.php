@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\json_ld_schema;
+namespace Drupal\json_ld_schema\Source;
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Plugin\PluginBase;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\json_ld_schema;
+namespace Drupal\json_ld_schema\Source;
 
 use Drupal\Core\Cache\CacheableMetadata;
 use Drupal\Core\Entity\EntityInterface;
@@ -10,6 +10,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Base class for JSON LD sources that should appear on entity pages.
+ *
+ * @deprecated
+ *   Use the JsonLdEntity plugin type instead of this base class.
  */
 abstract class EntityJsonLdSourceBase extends JsonLdSourceBase implements ContainerFactoryPluginInterface {
 

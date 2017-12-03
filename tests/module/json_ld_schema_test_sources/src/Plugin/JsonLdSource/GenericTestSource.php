@@ -2,7 +2,7 @@
 
 namespace Drupal\json_ld_schema_test_sources\Plugin\JsonLdSource;
 
-use Drupal\json_ld_schema\JsonLdSourceBase;
+use Drupal\json_ld_schema\Source\JsonLdSourceBase;
 use Spatie\SchemaOrg\Schema;
 use Spatie\SchemaOrg\Type;
 

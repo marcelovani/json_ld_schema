@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\json_ld_schema;
+namespace Drupal\json_ld_schema\Source;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Extension\ModuleHandlerInterface;

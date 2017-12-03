@@ -11,7 +11,7 @@ use Drupal\Tests\BrowserTestBase;
  *
  * @group json_ld_schema
  */
-class RenderJsonLdScriptTest extends BrowserTestBase {
+class JsonLdSourceTest extends BrowserTestBase {
 
   /**
    * {@inheritdoc}
