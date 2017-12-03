@@ -83,7 +83,7 @@ class JsonLdEntityTest extends BrowserTestBase {
    *   The rating.
    */
   protected function assertRating($rating) {
-    $this->assertContains('{"@type":"AggregateRating","ratingValue":' . $rating .'}', $this->getSession()->getPage()->getHtml());
+    $this->assertContains('{"@type":"AggregateRating","ratingValue":' . $rating . '}', $this->getSession()->getPage()->getHtml());
   }
 
 }

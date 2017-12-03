@@ -10,7 +10,7 @@ use Spatie\SchemaOrg\Type;
 
 /**
  * A test entity.
- * 
+ *
  * @JsonLdEntity(
  *   label = "Node Full Test Entity",
  *   id = "node_full_test",
