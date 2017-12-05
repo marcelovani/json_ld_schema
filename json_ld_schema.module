@@ -65,7 +65,7 @@ function json_ld_schema_entity_view(array &$build, EntityInterface $entity, Enti
         '#value' => json_encode($json_ld_entity->getData($entity, $view_mode)
           ->toArray(), JSON_UNESCAPED_UNICODE),
       ],
-      sprintf('json_ld_%s_%s', $entity->getEntityTypeId(), $view_mode),
+      sprintf('json_ld_%s_%s_%s', $entity->getEntityTypeId(), $entity->id(), $view_mode),
     ];
   }
 }
