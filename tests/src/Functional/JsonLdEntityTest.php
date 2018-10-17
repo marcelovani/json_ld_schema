@@ -38,6 +38,8 @@ class JsonLdEntityTest extends BrowserTestBase {
 
     $this->drupalGet($node->tourl());
     $this->assertContains('"@type":"Brewery","name":"Example Node"', $this->getSession()->getPage()->getHtml());
+    $this->assertBreadcrumbs();
+    $this->assertOrganization();
 
     // By default the low rating will be displayed.
     $this->assertRating(1);
@@ -81,6 +83,20 @@ class JsonLdEntityTest extends BrowserTestBase {
    */
   protected function assertRating($rating) {
     $this->assertContains('{"@type":"AggregateRating","ratingValue":' . $rating . '}', $this->getSession()->getPage()->getHtml());
+  }
+
+  /**
+   * Assert the ld+json for Breadcrumbs are correct.
+   */
+  protected function assertBreadcrumbs() {
+    $this->assertContains('"@context":"http:\/\/schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home"', $this->getSession()->getPage()->getHtml());
+  }
+
+  /**
+   * Assert the ld+json for Organization are correct.
+   */
+  protected function assertOrganization() {
+    $this->assertContains('"@context":"http:\/\/schema.org","@type":"Organization","url":"http:\/\/www.example.com","logo":"http:\/\/www.example.com\/logo.jpg"', $this->getSession()->getPage()->getHtml());
   }
 
 }

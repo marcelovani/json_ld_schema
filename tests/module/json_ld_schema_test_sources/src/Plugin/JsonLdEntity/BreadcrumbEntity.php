@@ -41,12 +41,7 @@ class BreadcrumbEntity extends JsonLdEntityBase {
     foreach ($breadcrumbs as $link) {
       $items[] = Schema::listItem()
         ->position(++$pos)
-        ->name(strip_tags($link->toString()))
-        ->item(
-          Schema::thing()
-            ->setProperty('@id', $link->getUrl()->toString())
-        )
-      ;
+        ->name(strip_tags($link->toString()));
     }
 
     return Schema::breadcrumbList()
