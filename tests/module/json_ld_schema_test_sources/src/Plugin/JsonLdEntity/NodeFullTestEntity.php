@@ -38,7 +38,12 @@ class NodeFullTestEntity extends JsonLdEntityBase {
       ->aggregateRating([
         Schema::aggregateRating()
           ->ratingValue($rating === 'high' ? $state->get('json_ld_entity_test_rating_high', 5) : $state->get('json_ld_entity_test_rating_low', 1)),
-      ]);
+      ])
+      ->publisher(
+        Schema::organization()
+          ->name('Example Corp')
+          ->logo(Schema::imageObject()->url('http://www.example.com/logo.jpg'))
+      );
   }
 
   /**
